@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+	int n;
+	cout<<"enter n: ";
+	cin>>n;
+	if(n>1)
+	{
+		if(n==2)
+		{
+			cout<<"prime"<<endl;
+		}
+		else
+		{
+		for(int i=2;i*i<=n;i++)
+			{
+				if(n%i==0)
+				{
+					cout<<"not prime"<<endl;
+					break;
+				}
+				else 
+				{
+					cout<<"it is prime";
+					break;
+				} 
+			}
+		}
+	}
+	else
+	{
+		cout<<"enter valid number"<<endl;
+	}
+}
