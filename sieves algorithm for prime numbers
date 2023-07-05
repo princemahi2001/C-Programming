@@ -9,7 +9,7 @@ void isprime(int n)
 		{
 			for(int j=i*i;j<=n;j+=i)
 			{
-				prime[i]=1;
+				prime[j]=1;
 			}
 		}
 	}
