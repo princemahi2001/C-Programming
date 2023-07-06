@@ -1,0 +1,19 @@
+/* Online C++ Compiler and Editor */
+#include <iostream>
+using namespace std;
+void bin(int n,string s)
+{
+    if(s.length()==n)
+    {
+        cout<<s<<endl;
+        return;
+    }
+    bin(n,s+"0");
+    bin(n,s+"1");
+}
+int main()
+{
+   int n;
+   cin>>n;
+   bin(n,"");
+}
