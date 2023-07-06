@@ -1,0 +1,44 @@
+
+#include<iostream>
+using namespace std;
+void isprime(int l,int r)
+{
+    int sum=0;
+	int prime[100000]={0};
+	int prefixprime[100000]={0};
+	for(int i=2;i<100000;i++)
+	{
+		if(prime[i]==0)
+		{
+			for(int j=2*i;j<=100000;j+=i)
+			{
+				prime[j]=1;
+			}
+		}
+	}
+	for(int i=2;i<100000;i++)
+	{
+	    if(prime[i]==0)
+	    {
+	        sum+=i;
+	        prefixprime[i]=sum;
+	    }
+	    else
+	    prefixprime[i]=sum;
+	}
+	cout<<"prime sum between L and R is : "<<prefixprime[r]-prefixprime[l];
+}
+int main()
+{
+	int l,r;
+	int t;
+	cin>>t;
+	while(t--)
+	{
+	    cout<<"enter L and R :";
+    	cin>>l>>r;
+    	isprime(l,r);
+    	cout<<endl;
+	}
+	return 0;
+}
