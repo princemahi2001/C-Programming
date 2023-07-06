@@ -1,0 +1,37 @@
+//////Given a range [L, R]. The task is to find the sum of all the prime numbers in the given range from L to R both inclusive.
+
+#include<iostream>
+using namespace std;
+void isprime(int l,int r)
+{
+    int sum=0;
+	int prime[100]={0};
+	for(int i=2;i<=r;i++)
+	{
+		if(prime[i]==0)
+		{
+			for(int j=i*i;j<=r;j+=i)
+			{
+				prime[j]=1;
+			}
+		}
+	}
+	for(int i=l;i<=r;i++)
+	{
+		if(prime[i]==0)
+		{
+			cout<<i<<" ";
+			sum+=i;
+		}
+	}
+	cout<<"\n";
+	cout<<"sum is :"<<sum;
+}
+int main()
+{
+	int l,r;
+	cout<<"enter L and R :";
+	cin>>l>>r;
+	isprime(l,r);
+	return 0;
+}
