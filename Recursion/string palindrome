@@ -1,0 +1,49 @@
+//wap to find whether the string is palindrome or not
+
+#include<iostream>
+using namespace std;
+bool palindrome(string s,int i,int j)
+{
+    if(i>j) return true;
+    return s[i]==s[j] && palindrome(s,i+1,j-1);
+}
+int main()
+{
+    string s="mada";
+    if(palindrome(s,0,s.length()-1))
+        cout<<"PALINDROME";
+    else
+    cout<<"not palindrome";
+}
+
+
+
+
+
+//wap to find whether the string is palindrome or not
+
+#include<iostream>
+using namespace std;
+string s1="";
+string palindrome(string s,int n)
+{
+    if(n>0)
+    {
+        s1+=s[n-1];
+        return palindrome(s,n-1);
+    }
+    return s1;
+}
+int main()
+{
+    string s="madam";
+    int n=s.length();
+    cout<<s<<endl;
+    cout<<palindrome(s,n)<<endl;
+    if(s1==s)
+    {
+        cout<<"PALINDROME";
+    }
+    else
+    cout<<"not palindrome";
+}
