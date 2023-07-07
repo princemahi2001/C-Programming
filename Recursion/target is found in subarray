@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+int a[3]={1,2,3};
+int n=3;
+void bin(int n,string s)
+{
+    if(s.length()==n)
+    {
+        int sum=0,target=3;
+        vector<int> v;
+       for(int i=0;i<s.length();i++)
+       {
+          if(s[i]=='1') 
+          {
+              sum+=a[i]; 
+              v.push_back(a[i]);
+          }
+       }
+       if(sum==target)
+       {
+          for(auto x:v) cout<<x<<" "; cout<<endl;
+       }
+       return;
+    }
+    bin(n,s+"0");
+    bin(n,s+"1");
+}
+int main()
+{
+   bin(n,"");
+}
