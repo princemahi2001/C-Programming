@@ -29,3 +29,35 @@ int main()
 {
    bin(n,"");
 }
+
+
+
+
+
+
+
+#include<bits/stdc++.h>
+using namespace std;
+bool status=false;
+void target(int a[],int n,int tar)
+{
+    if(n<0) 
+    {
+        if(tar==0) 
+        { 
+            status=true;
+            
+        }
+        return;
+    }
+    target(a,n-1,tar-a[n]);
+    target(a,n-1,tar);
+}
+int main()
+{
+    int a[4]={1,2,4,6};
+    int n=4;
+    int tar=13;
+    target(a,n-1,tar);
+    cout<<status;
+}
