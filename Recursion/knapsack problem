@@ -1,3 +1,5 @@
+//without fraction
+
 #include<bits/stdc++.h>
 using namespace std;
 int n=6;
@@ -14,3 +16,51 @@ int n=6;
      int weight=5;
      cout<<knapsack(weight,w,v,0);
  }
+
+
+
+//with fraction
+
+
+#include<bits/stdc++.h>
+using namespace std;
+int indexs(vector<float>v1,double Max)
+{
+    for(int i=0;i<v1.size();i++)
+    {
+        if(v1[i]==Max) return i;
+    }
+}
+int main()
+{
+     vector<float> v1;
+     double profit=0;
+     float value;
+     int weight=5;
+     float v[6]={10000,40000,8000,8000,15000,19000};
+     float w[6]={1,2,1,2,3,3};
+     int n=6;
+     for(int i=0;i<n;i++)
+     {
+         value=v[i]/w[i];
+         v1.push_back(value);
+     }
+     for(int i=0;i<n;i++)
+     {
+         double Max=*max_element(v1.begin(), v1.end());
+         int index=indexs(v1,Max);
+         if(weight<w[index])
+         {
+             profit+=weight*Max;
+             v1[index]=0;
+             weight=0;
+         }
+         else
+         {
+             profit+=w[index]*Max;
+             weight=weight-w[index];
+             v1[index]=0;
+         }
+     }
+     cout<<"profit: "<<profit<<endl;
+}
