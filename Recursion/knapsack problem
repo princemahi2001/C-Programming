@@ -19,7 +19,7 @@ int n=6;
 
 
 
-//with fraction
+//with fraction with O(n2) time complexity
 
 
 #include<bits/stdc++.h>
@@ -60,6 +60,58 @@ int main()
              profit+=w[index]*Max;
              weight=weight-w[index];
              v1[index]=0;
+         }
+     }
+     cout<<"profit: "<<profit<<endl;
+}
+
+
+
+//with fraction with O(n) time complexity
+
+#include<bits/stdc++.h>
+using namespace std;
+bool cmp(pair<float, int> a, pair<float, int> b)
+{
+    if (a.first>b.first)
+        return true;
+    if (a.first == b.first)
+    {
+        if(a.second > b.second)
+            return true;
+        return false;
+    }
+    return false;
+}
+int main()
+{
+     vector<pair<float,int>> v1;
+     double profit=0;
+     float value;
+     int weight=5;
+     float v[6]={10000,40000,8000,8000,15000,19000};
+     float w[6]={1,2,1,2,3,3};
+     int n=6;
+     for(int i=0;i<n;i++)
+     {
+         value=v[i]/w[i];
+         v1.push_back(make_pair(value,i));
+     }
+     sort(v1.begin(),v1.end(),cmp);
+     for(int i=0;i<n;i++)
+     {
+         if(weight>0)
+         {
+             if(weight<w[v1[i].second])
+             {
+                 profit+=weight*v1[i].first;
+                 weight=0;
+             }
+             else
+             {
+                 profit+=w[v1[i].second]*v1[i].first;
+                 weight=weight-w[v1[i].second];
+             }
          }
      }
      cout<<"profit: "<<profit<<endl;
