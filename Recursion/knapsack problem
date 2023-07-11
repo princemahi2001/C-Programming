@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n=6;
+ int knapsack(int weight,int w[],int v[],int i)
+ {
+     if(i==n || weight==0) return 0;
+     if(w[i]>weight) return knapsack(weight,w,v,i+1);
+     else return max((v[i]+knapsack(weight-w[i],w,v,i+1)),(weight,w,v,i+1));
+ }
+ int main()
+ {
+     int w[n]={1,2,1,2,3,3};
+     int v[n]={10000,40000,8000,8000,15000,19000};
+     int weight=5;
+     cout<<knapsack(weight,w,v,0);
+ }
