@@ -22,3 +22,26 @@ int main()
    }
    cout<<"sum of xor of subarray : "<<sum;
 }
+
+
+
+
+//given an array a of size n.find the sum of xor of all sub array using  O(n2);
+
+#include <iostream>
+using namespace std;
+int main()
+{
+    int sum=0;
+   int arr[3]={1,2,3};
+   for(int i=0;i<3;i++)
+   {
+       int xorr=0;
+       for(int j=i;j<3;j++)
+       {
+           xorr=xorr^arr[j];
+           sum+=xorr;
+       }
+   }
+   cout<<"sum of xor of subarray : "<<sum;
+}
