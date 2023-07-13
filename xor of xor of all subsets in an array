@@ -1,0 +1,18 @@
+// C++ program to find XOR of XOR's of all subsets
+#include <bits/stdc++.h>
+using namespace std;
+int findXOR(int Set[], int n)
+{
+	if (n == 1)
+		return Set[0];
+	else
+		return 0;
+}
+int main()
+{
+	int Set[] = { 1, 2, 3,5 };
+	int n = sizeof(Set) / sizeof(Set[0]);
+	cout << "XOR of XOR's of all subsets is "
+		<< findXOR(Set, n);
+	return 0;
+}
