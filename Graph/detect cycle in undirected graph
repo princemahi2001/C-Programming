@@ -42,20 +42,19 @@ int main()
 using namespace std;
 vector<int> v1[10001];
 int flag=0;
-void dfs(int currnode,int parent,vector<bool>&visited)
+void dfs(int currnode,vector<bool>&visited,vector<bool>&res)
 {
-    //if(flag==1) return;
     visited[currnode]=true;
+    res[currnode]=true;
     //cout<<currnode<<" ";
     for(int j=0;j<v1[currnode].size();j++)
     {
-        if(visited[v1[currnode][j]]==false)
-        dfs(v1[currnode][j],currnode,visited);
-        else if(visited[v1[currnode][j]]==true && visited[v1[currnode][j]!=parent]) 
-        {
-            flag=1;
-        }
+        if(visited[j]==false)
+        dfs(v1[currnode][j],visited,res);
+        else if(res[j]==true) flag=1;
     }
+    res[currnode]=false;
+    //flag=0;
 }
 int main()
 {
@@ -71,8 +70,10 @@ int main()
         v1[x].push_back(y);
         //v1[y].push_back(x);
     }
+    //vector<bool>res[1001];
+    vector<bool>res(V+1,false);
         vector<bool>visited(V+1,false);
-        dfs(0,-1,visited);
+        dfs(0,visited,res);
         if(flag==1) cout<<"cycle";
         else cout<<"No cycle";
     
