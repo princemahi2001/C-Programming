@@ -10,7 +10,7 @@ void dfs(int currnode,int parent,vector<bool>&visited)
     {
         if(visited[v1[currnode][j]]==false)
         dfs(v1[currnode][j],currnode,visited);
-        if(visited[v1[currnode][j]]==true && visited[v1[currnode][j]!=parent]) flag=1;
+        else if(visited[v1[currnode][j]]==true && visited[v1[currnode][j]!=parent]) flag=1;
     }
 }
 int main()
@@ -26,6 +26,50 @@ int main()
         cin>>x>>y;
         v1[x].push_back(y);
         v1[y].push_back(x);
+    }
+        vector<bool>visited(V+1,false);
+        dfs(0,-1,visited);
+        if(flag==1) cout<<"cycle";
+        else cout<<"No cycle";
+    
+}
+
+
+
+//directed graph
+
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> v1[10001];
+int flag=0;
+void dfs(int currnode,int parent,vector<bool>&visited)
+{
+    //if(flag==1) return;
+    visited[currnode]=true;
+    //cout<<currnode<<" ";
+    for(int j=0;j<v1[currnode].size();j++)
+    {
+        if(visited[v1[currnode][j]]==false)
+        dfs(v1[currnode][j],currnode,visited);
+        else if(visited[v1[currnode][j]]==true && visited[v1[currnode][j]!=parent]) 
+        {
+            flag=1;
+        }
+    }
+}
+int main()
+{
+    int V,E,currnode;
+    cout<<"enter V and E: ";
+    cin>>V>>E;
+    cout<<endl;
+    while(E--)
+    {
+        int x,y;
+        cout<<"enter x and y: ";
+        cin>>x>>y;
+        v1[x].push_back(y);
+        //v1[y].push_back(x);
     }
         vector<bool>visited(V+1,false);
         dfs(0,-1,visited);
