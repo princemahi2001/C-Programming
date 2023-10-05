@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int a[n];
+    for(int j=0;j<n;j++)
+    {
+        cin>>a[j];
+    }
+    for(int i=1;i<n-1;i++)
+    {
+        if(a[i]>a[i-1] && a[i]>a[i+1])
+        {
+            cout<<a[i];
+        }
+    }
+}
