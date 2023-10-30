@@ -26,6 +26,6 @@ int main()
         v1[y].push_back(x);
     }
         vector<bool>visited(V+1,false);
-        dfs(0,visited);
+        dfs(1,visited);
     
 }
