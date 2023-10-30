@@ -1,6 +1,13 @@
 #include<bits/stdc++.h>
 using namespace std;
-bool issame()
+bool issame(vector<int> &v)
+{
+    for(int i=0;i<v.size()-1;i++)
+    {
+        if(v[i+1] != v[i]) return false;
+    }
+    return true;
+}
 void permutations(vector<int> v,int index,int end)
 {
     int n=v.size();
@@ -26,9 +33,18 @@ void com_sum(int index,int arr[],vector<int> &v,int n,int target)
     {
         if(target==0)
         {
-            
-            permutations(v,0,v.size());
-            cout<<endl;
+            if(issame(v))
+            {
+                for(int i=0;i<v.size();i++)
+                {
+                    cout<<v[i]<<" ";
+                }
+            }
+            else
+            {
+                permutations(v,0,v.size());
+                //cout<<endl;
+            }
         }
         return;
     }
@@ -49,3 +65,13 @@ int main()
     com_sum(0,arr,v,3,21);
     return 0;
 }
+
+
+//output
+5 7 9 
+5 9 7 
+7 5 9 
+7 9 5 
+9 7 5 
+9 5 7 
+7 7 7 
