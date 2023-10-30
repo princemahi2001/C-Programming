@@ -6,7 +6,7 @@ int main()
     cout<<"enter V and E: ";
     cin>>V>>E;
     cout<<endl;
-    vector<int> v1[V];
+    vector<int> v1[V+1];
     while(E--)
     {
         int x,y;
@@ -15,7 +15,7 @@ int main()
         v1[x].push_back(y);
         v1[y].push_back(x);
     }
-    for (int i=0;i<V;i++)
+    for (int i=1;i<=V;i++)
         {
             cout<<i<<"=>";
             for (int j=0;j<v1[i].size();j++)
